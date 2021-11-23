@@ -39,20 +39,16 @@ public class Voiture {
 
     
     public Set<Garage> garagesVisites() {
-        
-        if (myStationnements.isEmpty()){
-            throw new UnsupportedOperationException("Cette voiture n'a jamais visité de garage");
-        }
-        return null;
+        HashSet<Garage> Garage= new HashSet<Garage>();
+        for(Stationnement s : myStationnements){
+            Garage.add(s.getGarage());
+        }       
+        return Garage;
     }
 
-	/**
-	 * @return vrai si la voiture est dans un garage, faux sinon
-	 */
+    
     public boolean estDansUnGarage() {
-        // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
-        // Vrai si le dernier stationnement est en cours
+            return myStationnements.get(myStationnements.size() - 1).estEnCours();        
     }
 
     /**
@@ -70,8 +66,11 @@ public class Voiture {
      * @param out l'endroit où imprimer (ex: System.out)
      */
     public void imprimeStationnements(PrintStream out) {
-        // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        for (Garage garage : garagesVisites()){
+            for (Stationnement s : myStationnements){
+                out.println("\t"+s.toString());
+            }
+        }
     }
 
 }
