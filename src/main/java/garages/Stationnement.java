@@ -7,7 +7,6 @@ public class Stationnement {
 
 	private final Voiture myCar;
 	private final Garage myGarage;
-
 	private final Date entree = new Date(); // Aujourd'hui
 	private Date fin;
 
@@ -42,7 +41,7 @@ public class Stationnement {
 
 	@Override
 	public String toString() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		return String.format("Stationnement{ entree=%s, %s }",
 			dateFormat.format(entree),
 			estEnCours() ? "en cours" : "sortie=" + dateFormat.format(fin)
